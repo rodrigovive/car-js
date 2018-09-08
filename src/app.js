@@ -21,3 +21,6 @@ dataService.loadData(fleet)
 //let headers = 'License Make Model Miles'.split(' ');
 
 //let dt = new DataTable(headers, data);
+for(let car of dataService.cars){
+
+}
