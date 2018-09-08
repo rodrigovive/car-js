@@ -2,6 +2,13 @@ import {Button as MainButton} from './ui/button.js';
 import { Image } from './ui/image.js';
 import $ from 'jquery';
 import {TitleBar} from './ui/title-bar.js';
+import {DataTable} from './ui/data-table';
+import {FleetDataService} from './services/fleet-data-service';
+import {fleet} from './services/fleet-data';
+
+let dataService = new FleetDataService();
+
+dataService.loadData(fleet)
 
 // let b = new MainButton('Click me');
 //
@@ -11,12 +18,6 @@ import {TitleBar} from './ui/title-bar.js';
 //
 // i.appentToElement($('body'));
 //
+//let headers = 'License Make Model Miles'.split(' ');
 
-let tb = new TitleBar('Aplicacion')
-
-tb.addLink('Home','/')
-tb.addLink('Drones','/')
-tb.addLink('Cars','/')
-tb.addLink('Map','/')
-
-tb.appentToElement($('body'))
+//let dt = new DataTable(headers, data);
