@@ -1,5 +1,6 @@
-import {DataError} from './data-error';
-import {Drone} from '../classes/drone';
+import {DataError} from './data-error.js';
+import {Drone} from '../classes/drone.js';
+import {Car} from '../classes/car.js';
 
 export class FleetDataService {
 
@@ -7,6 +8,18 @@ export class FleetDataService {
     this.cars = [];
     this.drone = [];
     this.errors = [];
+  }
+
+  getCarByLicense(license) {
+    return this.cars.find((car) => car.license === license);
+  }
+
+  getCarSortedByLicense() {
+    return this.cars.sort((car1, car2) => {
+      if (car1.license < car2.license) return -1;
+      if (car1.license > car2.license) return 1;
+      return 0;
+    });
   }
 
   loadData(fleet) {
@@ -65,7 +78,7 @@ export class FleetDataService {
   }
 
   validateCarData(car) {
-    let requireProps = 'license model latLong miles make'.split(' ');
+    let requireProps = 'license model miles make'.split(' ');
     let hasErrors = false;
     for (let field of requireProps) {
       if (!car[field]) {
@@ -73,8 +86,8 @@ export class FleetDataService {
         hasErrors = true;
       }
     }
-    if (Number.isNaN(Number.parseFloat('invalid mileage', car))) {
-      this.errors.push(new DataError('invalid message', car));
+    if (Number.isNaN(Number.parseFloat(car.miles))) {
+      this.errors.push(new DataError('invalid miles', car));
       hasErrors = true;
     }
 
