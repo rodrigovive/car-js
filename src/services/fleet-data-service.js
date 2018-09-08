@@ -65,6 +65,9 @@ export class FleetDataService {
     }
     return null;
   }
+  filteredByMake(filter){
+    return this.cars.filter(car => car.make.indexOf(filter) >= 0)
+  }
 
   loadDrone(drone) {
     try {

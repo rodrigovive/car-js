@@ -27,9 +27,10 @@ for (let e of dataService.errors) {
 
 // dataService.getCarByLicense('')
 
-let cars = dataService.getCarSortedByLicense();
+let cars = dataService.filteredByMake('2');
 
 for (let car of cars)
-  console.log(car.license);
+  console.log(car);
 
-console.log(dataService.drone)
+// console.log(dataService.drone)
+
