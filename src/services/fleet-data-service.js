@@ -4,10 +4,11 @@ import {Car} from '../classes/car.js';
 
 export class FleetDataService {
 
-  constructor() {
+  constructor(fleet) {
     this.cars = [];
     this.drone = [];
     this.errors = [];
+    this.loadData(fleet);
   }
 
   getCarByLicense(license) {
@@ -65,8 +66,9 @@ export class FleetDataService {
     }
     return null;
   }
-  filteredByMake(filter){
-    return this.cars.filter(car => car.make.indexOf(filter) >= 0)
+
+  filteredByMake(filter) {
+    return this.cars.filter(car => car.make.indexOf(filter) >= 0);
   }
 
   loadDrone(drone) {
