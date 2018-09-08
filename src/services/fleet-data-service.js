@@ -15,7 +15,7 @@ export class FleetDataService {
         case `car`:
           if (this.validateCarData(data)) {
             let car = this.loadCar(data);
-            if(car){
+            if (car) {
               this.cars.push(car);
             }
           } else {
@@ -50,7 +50,7 @@ export class FleetDataService {
     } catch (e) {
       this.errors.push(new DataError(`Error Load Car`, car));
     }
-    return null
+    return null;
   }
 
   loadDrone(drone) {
@@ -81,4 +81,15 @@ export class FleetDataService {
     return !hasErrors;
   }
 
+  validateDroneData(drone) {
+    let requireProps = 'license model latLong airTimeHours base'.split(' ');
+    let hasErrors = false;
+    for (let field of requireProps) {
+      if (!drone[field]) {
+        this.errors.push(new DataError(`invalid field ${field}`, drone));
+        hasErrors = true;
+      }
+    }
+    return !hasErrors;
+  }
 }
