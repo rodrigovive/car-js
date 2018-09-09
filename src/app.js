@@ -5,6 +5,7 @@ import {TitleBar} from './ui/title-bar.js';
 import {DataTable} from './ui/data-table.js';
 import {FleetDataService} from './services/fleet-data-service.js';
 import {fleet} from './services/fleet-data.js';
+import {GoogleMap} from './ui/google-map.js';
 
 let dataService = new FleetDataService(fleet);
 
@@ -29,8 +30,15 @@ for (let e of dataService.errors) {
 
 // let cars = dataService.filteredByMake('2');
 
-let headers = 'license make model miles Latlong'.split(' ');
-let dt = new DataTable(headers, dataService.cars);
-dt.appentToElement($('body'));
-// console.log(dataService.drone)
+let headersCars = 'license make model miles Latlong'.split(' ');
+let dtCars = new DataTable(headersCars, dataService.cars);
+dtCars.appentToElement($('body'));
+$('body').append(`<br>Drone<hr>`)
+let headersDrone = 'license model airTimeHours base Latlong'.split(' ');
+let dtDrone = new DataTable(headersDrone, dataService.drone);
+dtDrone.appentToElement($('body'));
 
+let centerOfMap = { lat: -18.006569, lng: -70.246277}
+let map = new GoogleMap(centerOfMap, dataService.drone);
+
+map.appentToElement($('body'))

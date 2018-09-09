@@ -10,24 +10,31 @@
     <script src="node_modules/traceur/bin/traceur.js"></script>
     <script src="node_modules/systemjs/dist/system.js"></script>
     <script src="node_modules/material-design-lite/dist/material.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvY8-K5v00Jw9P3pwb0YuoMznyyZDOVVk&callback=googleMapsCallback"
+            type="text/javascript"></script>
+
 </head>
 <body>
 <script >
+
+    function googleMapsCallback(){
+      System.config({
+        paths: {
+          "jquery": "./node_modules/jquery/dist/jquery.js"
+        },
+        meta: {
+          "jquery": { "format": "global" }
+        },
+        map: {
+          'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
+          'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
+        },
+        transpiler: 'plugin-babel'
+      });
+      System.import('src/app.js')
+    }
     // System.paths['jquery'] = './node_modules/jquery/dist/jquery.js'
-    System.config({
-      paths: {
-        "jquery": "./node_modules/jquery/dist/jquery.js"
-      },
-      meta: {
-        "jquery": { "format": "global" }
-      },
-      map: {
-        'plugin-babel': './node_modules/systemjs-plugin-babel/plugin-babel.js',
-        'systemjs-babel-build': './node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
-      },
-      transpiler: 'plugin-babel'
-    });
-    System.import('src/app.js')
 </script>
 </body>
 </html>
