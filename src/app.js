@@ -2,6 +2,7 @@ import $ from 'jquery';
 import {FleetDataService} from './services/fleet-data-service.js';
 import {fleet} from './services/fleet-data.js';
 import {ApplicationBase} from './framework/application-base.js';
+import {HomePage} from './home-page.js';
 
 export class App extends ApplicationBase {
   constructor() {
@@ -9,12 +10,14 @@ export class App extends ApplicationBase {
     this.dataService = new FleetDataService();
     this.dataService.loadData(fleet);
 
+    this.addRoute('Home', new HomePage(), true);
   }
 
 }
 
-let application = new App();
+export let application = new App();
 application.show($('body'));
+
 
 // let headersCars = 'license make model miles Latlong'.split(' ');
 // let dtCars = new DataTable(headersCars, dataService.cars);
