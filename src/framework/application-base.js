@@ -16,7 +16,7 @@ export class ApplicationBase {
     this.routeMap[route].appentToElement(content);
   }
 
-  show(elememt) {
+  show(element) {
     this.titlebar.appentToElement(element);
     if (this.defaultRoute) {
       this.activateRoute(this.defaultRoute);

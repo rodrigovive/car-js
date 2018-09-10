@@ -7,8 +7,8 @@ import {HomePage} from './home-page.js';
 export class App extends ApplicationBase {
   constructor() {
     super('Gestion de vehiculos');
-    this.dataService = new FleetDataService();
-    this.dataService.loadData(fleet);
+    // this.dataService = new FleetDataService();
+    // this.dataService.loadData(fleet);
 
     this.addRoute('Home', new HomePage(), true);
   }

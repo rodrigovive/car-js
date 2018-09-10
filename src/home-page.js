@@ -10,7 +10,7 @@ export class HomePage extends BaseElement {
 
   createElement() {
     super.createElement();
-    let i = new Image('../images/drone.jpg');
+    let i = new Image('../images/drone.jpeg');
     i.appentToElement(this.element)
 
     let b = new Button('Selft Driving Cars')
