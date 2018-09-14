@@ -13,10 +13,14 @@ export class HomePage extends BaseElement {
     let i = new Image('../images/drone.jpeg');
     i.appentToElement(this.element)
 
-    let b = new Button('Selft Driving Cars')
+    let styleString = 'width: 300px;height: 80px;font-size: 12px;'
+    let b = new Button('Self Driving Cars')
+    b.setStyleString(styleString)
     b.appentToElement(this.element);
 
-
+    b = new Button('Drones')
+    b.setStyleString(styleString)
+    b.appentToElement(this.element);
   }
 
   getElementString(){
